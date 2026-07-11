@@ -56,4 +56,12 @@
       mats.forEach(function(m){ m.classList.toggle('on', m.dataset.mat===btn.dataset.mat); });
     });
   });
+
+  /* wordmark -> smooth scroll to top, no lingering #hash */
+  var brand=document.querySelector('.brand');
+  if(brand) brand.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
+    if(history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+  });
 })();
