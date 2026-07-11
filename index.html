@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilnkit — Texture folder to finished PBR asset, in one click</title>
+<meta name="description" content="A Blender add-on that finishes the assets you already have: scale, texture mapping, node graph, naming, LODs and render output, from a folder of textures.">
+<link rel="canonical" href="https://kilnkit.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kilnkit — Texture folder to finished PBR asset">
+<meta property="og:description" content="A Blender add-on that finishes the assets you already have. One click, zero dependencies.">
+<meta property="og:url" content="https://kilnkit.com/">
+<meta property="og:image" content="https://kilnkit.com/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/theme-studio.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <a class="wordmark" href="/" style="text-decoration:none;">Kiln<em>kit</em></a>
+    <nav class="nav">
+      <a href="#pipeline">Pipeline</a>
+      <a href="#editions">Editions</a>
+      <a href="https://github.com/kilnkit/kilnkit">Source</a>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div>
+      <p class="label">Blender 4.5+ add-on</p>
+      <h1 style="margin-top:var(--space-6);">Texture folder&nbsp;→ finished PBR asset. One click.</h1>
+      <p class="lead" style="margin-top:var(--space-6);">Kilnkit does the boring part of finishing a Blender asset — scale, texture mapping, node graph, naming, LODs and render output — from a folder you already have. Not a texture generator. Not a material library. A pipeline.</p>
+      <div class="cta-row">
+        <a class="btn btn-fire" href="https://github.com/kilnkit/kilnkit/releases">Download free</a>
+        <span class="btn btn-ghost" aria-disabled="true">Full edition · $29 · soon</span>
+      </div>
+      <p class="label" style="margin-top:var(--space-6);">GPL-3.0-or-later · zero dependencies · no network</p>
+    </div>
+
+    <div>
+      <div class="stage">
+        <div class="kiln" role="img" aria-label="A plain grey sphere is fired into a finished marble asset.">
+          <img class="raw" src="assets/img/hero-raw.webp" alt="" width="900" height="900" fetchpriority="high">
+          <img class="fired" src="assets/img/hero-fired.webp" alt="" width="900" height="900" fetchpriority="high" draggable="false">
+          <div class="glow" aria-hidden="true"></div>
+        </div>
+        <model-viewer class="hero-3d" src="assets/model/kilnkit-marble.glb"
+          alt="A marble sphere finished with Kilnkit — drag to turn it"
+          environment-image="neutral" exposure="1.05" shadow-intensity="0.35" shadow-softness="1"
+          camera-controls disable-zoom disable-pan disable-tap interaction-prompt="none"
+          auto-rotate auto-rotate-delay="0" rotation-per-second="14deg"
+          camera-orbit="-32deg 76deg auto" min-camera-orbit="auto 60deg auto" max-camera-orbit="auto 100deg auto"
+          reveal="manual" loading="lazy"></model-viewer>
+      </div>
+      <div class="kiln-hint">
+        <p class="label">Drag to turn it</p>
+        <span aria-hidden="true" style="color:var(--kiln-line);">·</span>
+        <button class="refire" type="button">Fire again</button>
+      </div>
+    </div>
+  </header>
+
+  <hr class="heat">
+
+  <section>
+    <div class="grid2">
+      <div>
+        <p class="label">Why it exists</p>
+        <h2 style="margin-top:var(--space-4);">Blender keeps getting bigger. Finishing never got faster.</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-4); padding-top:6px;">
+        <p>More editors, more shortcuts, more node systems to learn — and somewhere in there, the boring parts of finishing an asset stayed exactly as slow. After four years of production work, the same chores kept eating the same hours: rescale, unwrap, wire the texture nodes, rename the datablocks, build LODs, set up a camera and a light, render a few angles.</p>
+        <p>None of it is creative. All of it is repetitive. Kilnkit is the tool I wanted for that.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <section id="pipeline">
+    <p class="label">The pipeline</p>
+    <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-12);">Point it at a folder. Get back an asset.</h2>
+    <div class="steps">
+      <div class="step"><div><h3>Read the folder</h3><p>A MaterialX <code>.mtlx</code> sidecar is read exactly when it exists. Otherwise filename keywords, suffix-independent. Built-in XML only — nothing to install.</p></div></div>
+      <div class="step"><div><h3>Apply and wire</h3><p>Scale applied, textures mapped, a Principled BSDF wired. The default is a seam-free triplanar preview that never touches your UVs.</p></div></div>
+      <div class="step"><div><h3>Finish the UVs</h3><p>Triplanar creates no UV map — so the panel says so, and offers one click to keep the mesh's own UVs or make new ones. Baking and engine export need real UVs.</p></div></div>
+      <div class="step"><div><h3>Name, batch, render</h3><p>Objects, meshes and materials take one family name. LODs and duplicate cleanup on demand. Then light it, frame it, and render stills or a turntable.</p></div></div>
+    </div>
+
+    <div class="panels" style="margin-top:var(--space-16);">
+      <div>
+        <span class="plate"><img src="assets/img/panel-main.webp" alt="Kilnkit's main panel: a slot pointed at a texture folder, the detected channels, the mapping dropdown and the UV status line" width="840" height="1272" loading="lazy"></span>
+        <p class="label cap">Main — detected channels, mapping, UV status</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-8);">
+        <div>
+          <span class="plate"><img src="assets/img/panel-render.webp" alt="Kilnkit's render tab: environment, lighting, camera, render settings, output and turntable" width="1200" height="1106" loading="lazy"></span>
+          <p class="label cap">Render — environment, camera, output</p>
+        </div>
+        <div>
+          <span class="plate"><img src="assets/img/panel-library.webp" alt="Kilnkit's library panel with four staged materials and their previews" width="840" height="926" loading="lazy"></span>
+          <p class="label cap">Library — folder to material, no mesh needed</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <section>
+    <p class="label">Any folder</p>
+    <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-12);">The same pipeline, whatever you feed it.</h2>
+    <div class="swap">
+      <div class="swap-stage">
+        <img class="on" data-mat="marble" src="assets/img/mat-marble.webp" alt="A sphere finished with a marble texture set" width="760" height="760">
+        <img data-mat="concrete" src="assets/img/mat-concrete.webp" alt="A sphere finished with a concrete texture set" width="760" height="760" loading="lazy">
+        <img data-mat="wood" src="assets/img/mat-wood.webp" alt="A sphere finished with a wood texture set" width="760" height="760" loading="lazy">
+        <img data-mat="rock" src="assets/img/mat-rock.webp" alt="A sphere finished with a mossy rock texture set" width="760" height="760" loading="lazy">
+      </div>
+      <div class="swatch-row" role="tablist" aria-label="Material">
+        <button class="swatch" type="button" data-mat="marble" aria-pressed="true"><span class="chip" style="background:#b9bcc0;"></span>Marble</button>
+        <button class="swatch" type="button" data-mat="concrete" aria-pressed="false"><span class="chip" style="background:#8e8b86;"></span>Concrete</button>
+        <button class="swatch" type="button" data-mat="wood" aria-pressed="false"><span class="chip" style="background:#b3743c;"></span>Wood</button>
+        <button class="swatch" type="button" data-mat="rock" aria-pressed="false"><span class="chip" style="background:#8a9152;"></span>Rock</button>
+      </div>
+      <p class="label" style="text-align:center;">Four folders from ambientCG. Same sphere, same one click, no node editing.</p>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <section>
+    <p class="label">Render output</p>
+    <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-8);">Lit, framed and rendered without leaving the sidebar.</h2>
+    <div class="angles">
+      <figure><img src="assets/img/angle-front.webp" alt="Front view of the finished plinth" width="560" height="680" loading="lazy"><figcaption class="label">Front</figcaption></figure>
+      <figure><img src="assets/img/angle-threeq.webp" alt="Three-quarter view of the finished plinth" width="560" height="680" loading="lazy"><figcaption class="label">3/4</figcaption></figure>
+      <figure><img src="assets/img/angle-side.webp" alt="Side view of the finished plinth" width="560" height="680" loading="lazy"><figcaption class="label">Side</figcaption></figure>
+      <figure><img src="assets/img/angle-top.webp" alt="Top view of the finished plinth" width="560" height="680" loading="lazy"><figcaption class="label">Top</figcaption></figure>
+    </div>
+    <p class="label cap" style="margin-top:var(--space-4);">Four angles, framed and rendered by the add-on. The hero above turns on Kilnkit's own turntable frames.</p>
+
+    <div class="grid3" style="margin-top:var(--space-16);">
+      <div class="feat"><h3>Accurate detection</h3><p>Reads <code>.mtlx</code> sidecars for exact channel mapping — no keyword guessing, no GL/DX normal ambiguity.</p></div>
+      <div class="feat"><h3>Six UV modes</h3><p>Triplanar, Keep Existing UV, Object, Cube, Smart UV, and SLIM auto-seam unwrap.</p></div>
+      <div class="feat"><h3>Live sliders</h3><p>Texture scale per axis, AO, normal, height — with optional two-way node sync.</p></div>
+      <div class="feat"><h3>Asset library</h3><p>Build materials straight from folders with no mesh, mark them as assets, export one packed <code>.blend</code> each.</p></div>
+      <div class="feat"><h3>Batch, non-blocking</h3><p>Process many objects, or import a parent folder as one slot per sub-folder. The UI never freezes.</p></div>
+      <div class="feat"><h3>Render automation</h3><p>Environment, three-point lighting, auto-framed camera, multi-angle stills, and a 360° turntable.</p></div>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <section id="editions">
+    <div class="grid2" style="align-items:start;">
+      <div>
+        <p class="label">Editions</p>
+        <h2 style="margin-top:var(--space-4);">Same code. Two builds.</h2>
+        <p style="margin-top:var(--space-6);">The free build simply omits the render-queue file. There is no runtime lock and no licence check anywhere in the code — the split <em>is</em> the mechanism, so the GPL source stays freely modifiable either way.</p>
+      </div>
+      <table>
+        <thead><tr><th scope="col">&nbsp;</th><th scope="col">Free</th><th scope="col">Full</th></tr></thead>
+        <tbody>
+          <tr><td>Finishing pipeline</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td><code>.mtlx</code>, sliders, batch</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Render automation</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Turntable video</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Render queue</td><td class="no">—</td><td class="yes">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <section>
+    <div class="grid2" style="align-items:start;">
+      <div>
+        <p class="label">Honest scope</p>
+        <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-6);">What Kilnkit does not do.</h2>
+        <ul class="scope">
+          <li>It does <strong>not generate or paint</strong> textures. Bring your own maps.</li>
+          <li>It is <strong>not a material library</strong>. No pre-made materials ship with it.</li>
+          <li>It is <strong>not a render farm</strong>. The queue runs on your machine.</li>
+          <li>It is <strong>not an asset manager</strong>. It feeds Blender's own asset library rather than replacing it.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">Requirements</p>
+        <h2 style="margin-top:var(--space-4); margin-bottom:var(--space-6);">Nothing to install.</h2>
+        <p>Blender 4.5 LTS or newer. Pure Python using Blender's own API — no PIP packages, no bundled wheels, no external programs. Kilnkit makes no network requests of any kind and works fully offline.</p>
+        <div class="cta-row">
+          <a class="btn btn-fire" href="https://github.com/kilnkit/kilnkit/releases">Download free</a>
+          <a class="btn btn-ghost" href="https://github.com/kilnkit/kilnkit">View the source</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="heat">
+
+  <footer>
+    <div class="foot-row">
+      <p>Made by a working Blender artist, for his own daily work.<br>Copyright &copy; 2026 Deokho Kim · GPL-3.0-or-later</p>
+      <p class="foot-links">
+        <a href="https://github.com/kilnkit/kilnkit">Source</a>
+        <a href="https://github.com/kilnkit/kilnkit/issues">Issues</a>
+        <a href="mailto:kilnkithq@gmail.com">Email</a>
+      </p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
